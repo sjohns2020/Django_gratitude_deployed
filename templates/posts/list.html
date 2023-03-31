@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Posts list</h1>
+
+    <section class="card">
+        <form action="{% url 'posts' %}" method="get" >
+          <div >
+            <label for="title">Author:</label>
+            <select name="author" id="author">
+                <option disabled selected value> -- select an option -- </option>
+                {% for post in posts %} 
+                <option value="{{post.author.id}}">{{ post.author }}</option>    
+                {% endfor %}
+            </select>
+            <div class="input-group">
+              <label for="title">Title Contains:</label>
+              <input type="text" name="title" id="title">
+            </div>
+          </div>
+          <div>
+            <a href="{% url 'posts' %}">Clear</a>
+            <button type="submit"> Filter </button>
+          </div>
+        </form>
+      </section>
+
+    {% include 'partials/_posts_list.html' with posts=posts %}
+{% endblock %}

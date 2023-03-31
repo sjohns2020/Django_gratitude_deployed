@@ -1,0 +1,24 @@
+
+
+    <div class="post-card-container">
+        {% for post in posts %}
+        <div class="post-card">
+            <p>By: {{post.author}}</p>
+            <a href="{% url 'post_details' post.id %}">Title: {{post.title}}</a>
+            <p>Message: {{post.message}}</p>
+            <p>Company: {{post.company}}</p>
+            {% if post.recipients.all|length > 0 %}
+            <p>Recipients:
+            {% for user in post.recipients.all %}
+            {{user}} </p>
+            <img class="image" src="{{user.profile.pic.url}}" alt="">
+            {% endfor %}
+            {% endif %}
+            <p>Stars given: {{post.stars}}</p>
+            <p>Date: {{post.visit_date}}</p>
+            {% if post.upload|length > 0 %}
+            <img class="image" src="{{post.upload.url}}" alt="">
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>

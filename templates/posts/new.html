@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>New Artist</h2>
+    <form method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      <div>
+        {{ form.as_p }}
+        </div>
+        <button type="submit">Save</button>
+    </form>
+{% endblock %}

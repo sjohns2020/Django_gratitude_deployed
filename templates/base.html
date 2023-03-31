@@ -1,0 +1,78 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Finger+Paint&family=Permanent+Marker&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script src="https://kit.fontawesome.com/f09a77e663.js" crossorigin="anonymous"></script>
+    <title>Document</title>
+</head>
+<body>
+  <section id="header">
+    <nav id="title-nav">
+        <ul id="header-links">
+            <li>
+            <a id="title-head" class="title" href="{% url 'information_home' %}">Gratitude</a>
+            </li>
+            {% if user.is_authenticated %}
+            <li>
+                <a class="title" href="{% url 'dashboard' %}">Dashboard</a>
+            </li>
+            <li>
+              <a class="title" href="{% url 'post_new' %}">Be_Gratefull</a>
+          </li>
+            {% endif %}
+            <li>
+            <a class="title" href="{% url 'posts' %}">Posts</a>
+            </li>
+            <li>
+              <a class="title" href="{% url 'orgs' %}">Organisations</a>
+            </li>
+        </ul>
+    </nav>
+    <nav class="auth-nav">
+      <ul id="header-links">
+        {% if user.is_authenticated %}
+        <li>
+          <span class="title" > Logged in: <span >{{ user.username  }} </span></span>
+        </li>
+        <li>
+          <p  class="title" >  | </p>
+          </li>  
+            <li>
+          <a class="title"  href="{% url 'accounts_logout' %}"> Logout</a>
+        </li>
+        {% else %}
+
+        <li>
+          <a class="title"  href="{% url 'accounts_login' %}">Login  </a>
+        </li>
+        <li>
+        <p  class="title" > | </p>
+        </li>  
+          <a class="title"  href="{% url 'accounts_register' %}"> Register</a>
+        </li>
+        {% endif %}
+      </ul>
+    </nav>
+  </section>
+  <main>
+    <div class="content">
+      {% block content %}
+          
+      {% endblock  %}
+    </div>
+  </main>
+  <footer>
+    <p>Gratitude by Sean</p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,104 @@
+
+
+[
+  {
+    "model": "posts.Post",
+    "pk": 1,
+    "fields": {
+      "author": 1,
+      "title": "python3 manage.py loaddata seeds",
+      "message": "Good Guys!!",
+      "company": 1,
+      "recipients": [1],
+      "visit_date": "2021-1-12T16:00:00.000Z",
+      "post_date": "2021-1-12T16:00:00.000Z",
+      "stars": 3    
+    }
+  },
+  {
+    "model": "posts.Post",
+    "pk": 2,
+    "fields": {
+      "author": 1,
+      "title": "To the girl in the coffee shop",
+      "message": "Hiya, love you",
+      "company": 1,
+      "recipients": [1, 2],
+      "visit_date": "2021-1-12T16:00:00.000Z",
+      "post_date": "2021-1-12T16:00:00.000Z",
+      "stars": 4    
+    }
+  },
+  {
+    "model": "posts.Post",
+    "pk": 3,
+    "fields": {
+      "author": 2,
+      "title": "Wonderfull Manager",
+      "message": "Best Manager ever babes!!",
+      "company": 2,
+      "recipients": [3],
+      "visit_date": "2021-1-12T16:00:00.000Z",
+      "post_date": "2021-1-12T16:00:00.000Z",
+      "stars": 5
+    }
+  },
+  {
+    "model": "posts.Post",
+    "pk": 4,
+    "fields": {
+      "author": 1,
+      "title": "Yummy Food",
+      "message": "Portion sizes are amazing!!",
+      "company": 3,
+      "recipients": [3, 4],
+      "visit_date": "2021-1-12T16:00:00.000Z",
+      "post_date": "2021-1-12T16:00:00.000Z",
+      "stars": 5
+    }
+  },
+  {
+    "model": "posts.Post",
+    "pk": 5,
+    "fields": {
+      "author": 4,
+      "title": "Wonderfull Manager",
+      "message": "Best Manager ever babes!!",
+      "company": 3,
+      "recipients": [3],
+      "visit_date": "2021-1-12T16:00:00.000Z",
+      "post_date": "2021-1-12T16:00:00.000Z",
+      "stars": 5
+    }
+  },
+  {
+    "model": "orgs.Org",
+    "pk": 1,
+    "fields": {
+      "name": "Starbucks",
+      "website": "www.starbucks.com",
+      "date_added": "2021-1-12T16:00:00.000Z",
+      "stars": 4
+    }
+  },
+  {
+    "model": "orgs.Org",
+    "pk": 2,
+    "fields": {
+      "name": "Costa",
+      "website": "www.costa.com",
+      "date_added": "2021-1-12T16:00:00.000Z",
+      "stars": 1
+    }
+  },
+  {
+    "model": "orgs.Org",
+    "pk": 3,
+    "fields": {
+      "name": "CodeClan",
+      "website": "www.codeclan.com",
+      "date_added": "2021-1-12T16:00:00.000Z",
+      "stars": 5
+    }
+  }
+]

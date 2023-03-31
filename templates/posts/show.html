@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Post Details</h1>
+    <div class="post-card-container">
+        <div class="post-card">
+            <p>By: {{post.author}}</p>
+            <p>Title: {{post.title}}</p>
+            <p>Message: {{post.message}}</p>
+            <p>Company: {{post.company}}</p>
+            {% if post.recipients.all|length > 0 %}
+            <p>Recipients:
+            {% for user in post.recipients.all %}
+            {{user}} </p>
+            <img class="image" src="{{user.profile.pic.url}}" alt="">
+            {% endfor %}
+            {% endif %}
+            <p>Stars given: {{post.stars}}</p>
+            <p>Date: {{post.visit_date}}</p>
+            {% if post.upload|length > 0 %}
+            <img class="image" src="{{post.upload.url}}" alt="">
+            {% endif %}
+        </div>
+        <a href="{% url 'posts' %}">Back to Posts List</a>
+    </div>
+{% endblock %}
