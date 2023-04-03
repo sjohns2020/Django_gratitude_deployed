@@ -2,6 +2,8 @@ from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
 from orgs.models import Org
+from django.shortcuts import get_object_or_404
+# from accounts.models import UserProfile CIRCULAR - take it back to views and pass it in to the funciton.
 
 
 # Create your models here.
@@ -19,3 +21,12 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
+    
+    def add_stars_to_recipients(self, recipient_ids, new_stars, uprofile):
+        for id in recipient_ids:
+            user = get_object_or_404(User, id=int(id))
+            updated_stars = user.profile.stars + new_stars
+            uprofile.filter(user=user).update(stars=updated_stars)
+            # comp = Org.objects.filter(id=company_id).update(stars=new_stars)
+            # comp.save()
+            user.save()

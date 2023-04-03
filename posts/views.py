@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import login_required
 
 from posts.models import *
 from .forms import PostForm
+from accounts.models import *
 
 # Create your views here.
 
@@ -42,9 +43,16 @@ def post_details(request, id):
 def post_new(request):
     if request.method == "POST":
         form = PostForm(request.POST, request.FILES)
-        print(form)
+        print(request.POST["recipients"])
         if form.is_valid():
             post = form.save(commit=False)
+            recipients = get_object_or_404(User, id=int(request.POST["recipients"]))
+            uprofile = UserProfile.objects.filter(user=recipients)
+            post.add_stars_to_recipients(request.POST["recipients"], int(request.POST["stars"]), uprofile )
+            company = get_object_or_404(Org, id=int(request.POST["company"]))
+            company.stars += int(request.POST["stars"])
+            company.save()
+            print(company)
             post.save()
             return redirect('posts')
     else:

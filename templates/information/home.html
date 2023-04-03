@@ -2,4 +2,10 @@
 
 {% block content %}
     <h1>Home Page</h1>
+    <h1>Welcome {{user.username}}</h1>
+    <h1>Your total star rating = {{user.profile.stars}}</h1>
+    <h2>You have recieved %%% posts in the last week / month</h2>
+    <h2>You have given grattitude %%% times in the last week / month</h2>
+    <h2>You have  %%% posts in the last week / month</h2>
+    <h2>You have recieved %%% posts in the last week / month</h2>
 {% endblock %}

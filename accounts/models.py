@@ -10,6 +10,7 @@ class UserProfile(models.Model):
     organisations = models.ManyToManyField(
         Org, related_name="organisations"
     )
+    stars = models.IntegerField(default=0)
     # posts = models.ForeignKey(Post, null=True, on_delete=models.CASCADE, related_name="author")
     pic = models.ImageField(upload_to='uploads/', default="https://i.pinimg.com/originals/3d/66/78/3d667893c5788613ff3590ca218a9cb2.jpg")
 
@@ -18,14 +19,8 @@ class UserProfile(models.Model):
     def __str__(self):
         return self.user.username
     
-    # def add_post(self, post):
-    #     self.posts.append(post)
-    
-    # def remove_post(self, id):
-    #     self.posts.pop(id)
 
-    def add_organisation(self, post):
-        self.organisations.append(post)
-    
-    def remove_organisation(self, id):
-        self.organisations.pop(id)
+    def add_stars(self, stars):
+        print(stars)
+        print(self.stars)
+        self.stars += int(stars)

@@ -23,7 +23,9 @@
     <nav id="title-nav">
         <ul id="header-links">
             <li>
-            <a id="title-head" class="title" href="{% url 'information_home' %}">Gratitude</a>
+              <div id="title-logo">
+                <a id="title-head" class="title" href="{% url 'information_home' %}">Gratitude</a>
+              </div>
             </li>
             {% if user.is_authenticated %}
             <li>
