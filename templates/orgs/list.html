@@ -1,5 +1,28 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>Orgs list</h1>
+    <h1>Organisations list</h1>
+<!-- 
+    <section class="card">
+        <form action="{% url 'orgs' %}" method="get" >
+          <div >
+            <label for="title">Author:</label>
+            <select name="author" id="author">
+                <option disabled selected value> -- select an option -- </option>
+                {% for post in posts %} 
+                <option value="{{post.author.id}}">{{ post.author }}</option>    
+                {% endfor %}
+            </select>
+            <div class="input-group">
+              <label for="title">Title Contains:</label>
+              <input type="text" name="title" id="title">
+            </div>
+          </div>
+          <div>
+            <a href="{% url 'posts' %}">Clear</a>
+            <button type="submit"> Filter </button>
+          </div>
+        </form>
+      </section> -->
+    {% include 'partials/_orgs_list.html' with orgs=orgs %}
 {% endblock %}

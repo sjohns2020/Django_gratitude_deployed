@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Post Details</h1>
+    <div class="post-card-container">
+        <div class="post-card">
+            <a href="https://{{ org.website }}" target="_blank"><p> {{ org.name }}</p></a>
+            <p>Stars Earned {{org.stars}}</p>
+            <img class="image" src="{{ user.profile.pic.url }}" alt="">
+        </div>
+        <a href="{% url 'orgs' %}">Back to Organisations List</a>
+    </div>
+{% endblock %}

@@ -33,7 +33,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = env.str("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = env.bool("DEBUG", default=False)
+DEBUG = True
+# DEBUG = env.bool("DEBUG", default=False)
 
 ALLOWED_HOSTS = ['*']
 
@@ -99,13 +100,34 @@ WSGI_APPLICATION = "gratitude.wsgi.application"
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 
+# SWAP PUT DATABASES WHEN DEPLOYING
+
+# DATABASES = {
+#     "default": env.db_url("DATABASE_URL", default="sqlite:///db.sqlite3")
+# }
+
 DATABASES = {
-    "default": env.db_url("DATABASE_URL", default="sqlite:///db.sqlite3")
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'gratitude_posts',
+        'USER': 'codeclanstudent',
+        'PASSWORD': 'postgres',
+        'HOST': 'localhost',
+        'PORT': '5432'
+    }
 }
 
-
-
 LOGIN_REDIRECT_URL = "/posts"
+
+
+# s3 and fly.i0 - solution to stop running out of memory
+CACHES = {
+    "default": {
+        "BACKEND": "django.core.cache.backends.filebased.FileBasedCache",
+        "LOCATION": "/tmp/cache",
+    }
+}
+
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators

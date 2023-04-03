@@ -1,0 +1,13 @@
+
+<div class="post-card-container">
+    {% for org in orgs %}
+    <a href="{% url 'org_details' org.id %}"> 
+    <div class="post-card">
+        <p>{{org.name}} </p>
+        <p>Website: {{org.website}}</p>
+        <p>Stars Recieved: {{org.stars}}</p>
+        <img class="image" src="{{ org.upload.url }}" alt="">     
+    </div>
+    </a>
+    {% endfor %}
+</div>

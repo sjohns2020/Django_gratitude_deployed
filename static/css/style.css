@@ -1,3 +1,61 @@
+:root {
+
+/* Rich Gold  headings and buttons */
+--rich-gold-posh: #D4AF37;
+--rich-gold: rgb(254, 255, 191);
+
+/* Warm Taupe background */
+--warm-taupe: #907163;
+
+/* Soft Pink accent elements */
+--soft-pink: #E6B8B2;
+
+/* Deep Teal text and borders */
+--deep-teal: #008165;
+
+/* Ivory backround, text or accents*/
+--ivory: #FFFFF0;
+
+/* 1. Pastel Yellow Palette: */
+--primary-color-yellow: #FEFFBF; 
+--secondary-color-yellow-1: #FEEAA2; 
+--secondary-color-yellow-2: #FEDD87; 
+--secondary-color-yellow-3: #FECD63; 
+--secondary-color-yellow-4: #FEB500;
+
+/* Soft Green Palette: */
+--primary-color-green: #8BCB8F; 
+--secondary-color-green-1: #FEFFBF; 
+--secondary-color-green-2: #C5E5A1; 
+--secondary-color-green-3: #539E8B; 
+--secondary-color-green-4: #2E686B; 
+
+/* 3. Warm Earthy Palette: */
+--primary-color-brown: #BC8D5E; 
+--secondary-color-brown-1: #FEFFBF; 
+--secondary-color-brown-2: #E5C29F; 
+--secondary-color-brown-3: #8C5E2E; 
+--secondary-color-brown-4: #4F3C28;
+
+/* 4. Cool Blue Palette: */
+--primary-color-blue: #7DA3A6; 
+--secondary-color-blue-1: #FEFFBF; 
+--secondary-color-blue-2: #B3CDD1; 
+--secondary-color-blue-3: #486B6F; 
+--secondary-color-blue-4: #1E434C; 
+
+--YELLOW: #FEFFBF; 
+--primary-1: #FFCB6A;
+--secondary-1: #FFB575;
+--secondary-2: #BF4872;
+--complementary-1: #72BF94;
+--complementary-2: #7264BF;
+
+
+
+
+}
+
 body {
     display: grid;
     grid-template-rows: 3fr 25fr 1fr;
@@ -7,11 +65,13 @@ body {
     "footer";
     max-height: 100vh;
     /* font-family: 'Finger Paint', cursive; */
-    font-family: 'Permanent Marker', cursive;
+    font-family: 'Quicksand', sans-serif, 'Permanent Marker', cursive;
+
 }
 
 main {
-    background-color: rgba(0, 0, 0, 0.744);
+    background-color: var(--complementary-2);
+    background: linear-gradient(to bottom,rgb(255, 203, 106), rgb(255, 181, 117), rgb(191, 72, 114));
     display: flex;
     justify-content: center;
     align-items: center;
@@ -21,12 +81,12 @@ main {
     width: 60vw;
     height: 60vh;
     border-radius: 1em;
-    border: solid 0.1px rgba(0, 0, 0, 0.347);
-    background-color: rgb(227, 202, 219);
-    box-shadow:1px 1px 10px 10px #e2f2fb4d;
-    transition: box-shadow 0.25s ease-in;
+    background: rgb(240, 232, 254);
+    /* background-color: var(--primary-color-yellow); */
+    box-shadow: 1px 1px 4px 4px #e2f2fb4d;    
+    transition: 0.25s ease-in;
     padding: 3em;
-    border: solid 5px rgba(0, 0, 0, 0.479);
+    border: solid 4px var(--complementary-2);
     overflow: scroll;
 
 }
@@ -34,8 +94,8 @@ main {
 .content:hover {
     /* transform: scaleX(0); */
     box-shadow: 1px 1px 10px 10px #e2f2fb;
-    margin: -5px;
-    transition:0.25s ease-out;
+     /* margin: -5px; */
+    transition: 0.25s ease-out;
 }
 
 .image {
@@ -51,15 +111,14 @@ main {
 }
 
 .post-card {
-    border: 2px solid black;
-    border-radius: 1em;
+    border-radius: 0.5em;
     margin: 1em;
     padding: 1em;
     height: 12em;
     width: 14em;
     overflow: scroll;
-    border: solid 5px rgba(0, 0, 0, 0.781);
-    background-color: rgb(254, 255, 191);
+    border: solid 2px var(--complementary-2);
+    background-color:var(--YELLOW);
     box-shadow:1px 1px 4px 4px #e2f2fb4d;
     transition:0.25s ease-in;
     display: flex;
@@ -79,8 +138,10 @@ main {
     justify-content: space-around;
     align-items: center;
     padding: 1em;
-    background-color: rgba(192, 105, 160, 0.831);
-    box-shadow: 7px 7px 7px 7px #e2f2fb4d;
+    background-color: var(--complementary-2);
+    /* text-shadow: 0px 0px 10px #e2f2fb, 0 0 10px #e2f2fb, 0 0 15px #e2f2fb, 0 0 20px #e2f2fb, 0 0 25px #e2f2fb, 0 0 30px #e2f2fb, 0 0 35px #e2f2fb; */
+
+    box-shadow: 4px 4px 4px 4px #e2f2fb4d;
     text-decoration: none;
     position: relative;
     font-size: 1.5em;
@@ -95,7 +156,7 @@ main {
     margin-bottom: -1px;
     bottom: 0;
     left: 0;
-    box-shadow: 7px 7px 7px 7px #e2f2fb;
+    box-shadow: 6px 6px 6px 6px #e2f2fb;
     transform-origin: bottom right;
     transition: transform 0.25s ease-out;
 }
@@ -120,7 +181,8 @@ a {
     color: black;
 }
 
-a:after {
+/* Makes links have an underline */
+/* a:after {
     content: '';
     position: absolute;
     width: 100%;
@@ -137,11 +199,11 @@ a:after {
 a:hover:after {
     transform: scaleX(1);
     transform-origin: bottom left;
-}
+} */
 
 
 footer {
-    background-color: rgba(251, 241, 43, 0.452);
+    background-color: var(--complementary-2);
     display: flex;
     justify-content: center;
     align-items: baseline;
@@ -151,25 +213,29 @@ footer {
 
 .title {
     font-size: 1em;
-    text-shadow: 0px 0px 10px #ffffff4f, 0 0 10px #ffffff59, 0 0 15px #e2f2fb, 0 0 20px #e2f2fb, 0 0 25px #e2f2fb, 0 0 30px #e2f2fb, 0 0 35px #e2f2fb;
-    color: white;
-    text-shadow: 0px 0px 10px #ffffff4f, 0 0 10px #ffffff59, 0 0 15px #000000, 0 0 20px #000000, 0 0 25px #000000, 0 0 30px #000000, 0 0 35px #000000;
+    text-shadow: 0px 0px 4px black, 0px 0px 4px  black, 0px 0px 4px  white, 0px 0px 4px  white, 0px 0px 4px  white, 0px 0px 4px  white,  0px 0px 4px  white;
+    color: white; 
+    /* text-shadow: 0px 0px 10px #ffffff4f, 0 0 10px #ffffff59, 0 0 15px #000000, 0 0 20px #000000, 0 0 25px #000000, 0 0 30px #000000, 0 0 35px #000000; */
     transition: 0.25s color ease-out;
 }
 
 #title-head {
     font-size: 3em;
     margin-left: 0.5em;
+    color: var(--YELLOW);
+    font-family: 'Permanent Marker';
+    /* text-shadow: 2px 2px 6px black, 2px 2px 6px  black, 0 0 8px  white, 0 0 8px white, 0 0 8px white, 0 0 8px white, 0 0 8px white; */
 }
 
 .title:hover {
-    color: black;
-    text-shadow: 0px 0px 10px #ffffff4f, 0 0 10px #ffffff59, 0 0 15px #e2f2fb, 0 0 20px #e2f2fb, 0 0 25px #e2f2fb, 0 0 30px #e2f2fb, 0 0 35px #e2f2fb;
+    color: var(--ivory);
+    text-shadow: 0px 0px 10px black, 0 0 10px black, 0 0 15px #e2f2fb, 0 0 20px #e2f2fb, 0 0 25px #e2f2fb, 0 0 30px #e2f2fb, 0 0 35px #e2f2fb;
     transition: 0.25s ease-out;
+    color: var(--YELLOW);
     width: 0%;
 }
 .title:after {
-    color: black;
+    color: var(--ivory);
     text-shadow: 0px 0px 10px #ffffff4f, 0 0 10px #ffffff59, 0 0 15px #e2f2fb, 0 0 20px #e2f2fb, 0 0 25px #e2f2fb, 0 0 30px #e2f2fb, 0 0 35px #e2f2fb;
     transition: 0.25s ease-out;
     width: 0%;
