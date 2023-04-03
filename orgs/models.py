@@ -10,3 +10,7 @@ class Org(models.Model):
 
     def __str__(self):
         return self.name
+    
+    def add_stars(self, stars): 
+        self.stars += int(stars)
+        self.save()

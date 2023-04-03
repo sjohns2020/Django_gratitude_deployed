@@ -46,13 +46,12 @@ def post_new(request):
         print(request.POST["recipients"])
         if form.is_valid():
             post = form.save(commit=False)
+            #  Adding starts to the UserProfile and to the Organisation
             recipients = get_object_or_404(User, id=int(request.POST["recipients"]))
             uprofile = UserProfile.objects.filter(user=recipients)
             post.add_stars_to_recipients(request.POST["recipients"], int(request.POST["stars"]), uprofile )
             company = get_object_or_404(Org, id=int(request.POST["company"]))
-            company.stars += int(request.POST["stars"])
-            company.save()
-            print(company)
+            company.add_stars(request.POST["stars"])
             post.save()
             return redirect('posts')
     else:
