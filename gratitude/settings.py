@@ -49,10 +49,13 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "whitenoise.runserver_nostatic",
     "django.contrib.staticfiles",
+    'rest_framework',
+    'information',
     'accounts',
     'posts',
     'orgs',
-    'storages'
+    'storages',
+    'api'
 ]
 
 MIDDLEWARE = [
@@ -118,6 +121,16 @@ DATABASES = {
 }
 
 LOGIN_REDIRECT_URL = "/posts"
+
+# REST FRAMEWORK AUTHENTICATION
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES':[
+        'rest_framework.authentication.SessionAuthentication',
+    ],
+    'DEFAULT_PERMISSION_CLASSES':[
+        'rest_framework.permissions.IsAuthenticated'
+    ]
+}
 
 
 # s3 and fly.i0 - solution to stop running out of memory
