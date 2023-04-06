@@ -38,6 +38,31 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
+CORS_ALLOW_ALL_ORIGINS = True 
+CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:3000',
+    'http://127.0.0.1:3000',
+]
+
+# CORS_ORIGIN_WHITELIST = [
+#     'http://127.0.0.1:3000',
+#     'http://localhost:3000',
+# ]
+
+CSRF_TRUSTED_ORIGINS = ['http://127.0.0.1:3000', "https://gratitude.fly.dev"]
+
+
+# REST FRAMEWORK AUTHENTICATION
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES':[
+        'rest_framework.authentication.SessionAuthentication',
+    ],
+    'DEFAULT_PERMISSION_CLASSES':[
+        'rest_framework.permissions.IsAuthenticated'
+    ]
+}
+
 
 # Application definition
 
@@ -55,15 +80,17 @@ INSTALLED_APPS = [
     'posts',
     'orgs',
     'storages',
-    'api'
+    'api',
+    'corsheaders'
 ]
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
+    "django.middleware.csrf.CsrfViewMiddleware",
+    "corsheaders.middleware.CorsMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.middleware.common.CommonMiddleware",
-    "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware"
@@ -122,15 +149,6 @@ DATABASES = {
 
 LOGIN_REDIRECT_URL = "/posts"
 
-# REST FRAMEWORK AUTHENTICATION
-REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES':[
-        'rest_framework.authentication.SessionAuthentication',
-    ],
-    'DEFAULT_PERMISSION_CLASSES':[
-        'rest_framework.permissions.IsAuthenticated'
-    ]
-}
 
 
 # s3 and fly.i0 - solution to stop running out of memory
@@ -215,5 +233,3 @@ AWS_S3_OBJECT_PARAMETERS = {
 
 DEFAULT_FILE_STORAGE = 'gratitude.storage_backends.PublicMediaStorage'
 MEDIA_URL = AWS_S3_CUSTOM_DOMAIN + '/media/'
-
-CSRF_TRUSTED_ORIGINS = ["https://gratitude.fly.dev"]
