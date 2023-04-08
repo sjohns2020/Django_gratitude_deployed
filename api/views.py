@@ -1,34 +1,40 @@
 from django.shortcuts import render
 from rest_framework.views import APIView
-from django.shortcuts import render
 from rest_framework import generics
 from posts.models import Post
 from orgs.models import Org
 from accounts.models import UserProfile
 from django.contrib.auth.models import User
-from .serializers import PostSerializer
-from .serializers import OrgSerializer
-from .serializers import UserProfileSerializer
-from .serializers import UserSerializer
-from rest_framework.permissions import BasePermission
-from rest_framework.decorators import permission_classes, authentication_classes
-from rest_framework.authentication import SessionAuthentication
-from rest_framework.permissions import IsAuthenticated
-# from .permissions import IsAdmin
+from .serializers import (
+    PostSerializer,
+    OrgSerializer,
+    UserProfileSerializer,
+    UserSerializer,
+    LoginSerializer,
+    RegistrationSerializer,
+
+)
+from rest_framework.permissions import (
+    BasePermission,
+    IsAuthenticated,
+    AllowAny,
+)
+from rest_framework.decorators import (
+    permission_classes,
+    authentication_classes,
+)
+from rest_framework.authentication import (
+    SessionAuthentication,
+    TokenAuthentication,
+    BasicAuthentication,
+)
 from django.contrib.auth import authenticate, login, logout
 from rest_framework import status
-from .serializers import LoginSerializer
-from rest_framework.permissions import AllowAny
-from django.views.decorators.csrf import csrf_protect
+from django.views.decorators.csrf import csrf_protect, ensure_csrf_cookie
 from django.utils.decorators import method_decorator
 from rest_framework.response import Response
-from django.views.decorators.csrf import ensure_csrf_cookie
 from django.middleware.csrf import get_token
 from django.http import JsonResponse
-from django.views.decorators.csrf import ensure_csrf_cookie
-from django.views.decorators.csrf import csrf_protect
-from rest_framework.authentication import TokenAuthentication, SessionAuthentication, BasicAuthentication
-from rest_framework.permissions import IsAuthenticated
 
 csrf_protect_method = method_decorator(csrf_protect)
 ensure_csrf = method_decorator(ensure_csrf_cookie)
@@ -110,7 +116,16 @@ class LogoutView(APIView):
         return response
 
 
+class RegistrationView(APIView):
+    permission_classes = (AllowAny,)
+    authentication_classes = ()
 
+    def post(self, request):
+        serializer = RegistrationSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        authenticated_user = serializer.save()
+        login(request, authenticated_user)
+        return Response("Registration successful")
 
 
 
