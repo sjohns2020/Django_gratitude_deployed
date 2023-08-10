@@ -1,8 +1,6 @@
 # Django_gratitude_deployed
 
-BRIEF: 
-
-- Tech Stack
+Tech Stack
 - Python
 - Django
 - Django_rest_framework
@@ -12,6 +10,7 @@ BRIEF:
 - Fly.io
 - React
 
+BRIEF: 
 
 MVP
 
