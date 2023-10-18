@@ -1,7 +1,7 @@
 # Django_gratitude_deployed
 
 ## BRIEF
-- Create and deploy a Django application that allows admin to review graditude posted and use Django Rest Framework to build an API to connect up with a future React Native Frontend UI.  This is a fullstack Django app that should have an admin portal built in Django, have an integrated API with endpoints that will be used by a React Native frontend.
+Create and deploy a Django application that allows admin to review graditude posted and use Django Rest Framework to build an API to connect up with a future React Native Frontend UI.  This is a fullstack Django app that should have an admin portal built in Django, have an integrated API with endpoints that will be used by a React Native frontend.
 
 ### MVP
 - There should be an API built with Django Rest Framework, creating endpoints for future React Native Frontend.  
